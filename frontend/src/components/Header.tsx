@@ -10,8 +10,8 @@ export function Header() {
         </Link>
         <nav className="appbar-nav">
           <Link to="/">Home</Link>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
       </div>
     </header>
