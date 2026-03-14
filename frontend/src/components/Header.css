@@ -1,0 +1,64 @@
+/* AppBar Styles */
+.appbar {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.appbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.appbar-logo:hover {
+  opacity: 0.8;
+}
+
+.appbar-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.appbar-nav a {
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+}
+
+.appbar-nav a:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .appbar-nav {
+    gap: 1rem;
+  }
+
+  .appbar-logo {
+    font-size: 1.25rem;
+  }
+}
