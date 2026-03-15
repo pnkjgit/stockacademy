@@ -12,6 +12,28 @@ export function PaymentSuccessPage() {
     // Mark subscription as completed
     localStorage.setItem("subscription_completed", "true");
 
+    // Store subscription details
+    const today = new Date();
+    const expiryDate = new Date(
+      today.getFullYear() + 1,
+      today.getMonth(),
+      today.getDate(),
+    );
+
+    const subscriptionDetails = {
+      planType: "Annual",
+      amount: 99,
+      purchaseDate: today.toISOString(),
+      expiryDate: expiryDate.toISOString(),
+      paymentStatus: "completed",
+      subscriptionStatus: "active",
+    };
+
+    localStorage.setItem(
+      "subscription_details",
+      JSON.stringify(subscriptionDetails),
+    );
+
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {

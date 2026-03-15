@@ -10,6 +10,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
 import { PricingPage } from "./pages/PricingPage";
+import { BillingPage } from "./pages/BillingPage";
 import { PaymentPage } from "./pages/PaymentPage";
 import { PaymentSuccessPage } from "./pages/PaymentSuccessPage";
 import "./App.css";
@@ -60,6 +61,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <PricingPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/billing"
+              element={
+                <ProtectedRoute>
+                  <BillingPage />
                 </ProtectedRoute>
               }
             />

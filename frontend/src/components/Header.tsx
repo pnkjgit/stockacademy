@@ -28,8 +28,8 @@ export function Header() {
             <span className="nav-icon">🏠</span> Home
           </Link>
           {isAuthenticated && (
-            <Link to="/pricing" className="nav-link pricing-link">
-              <span className="nav-icon">💳</span> Pricing
+            <Link to="/billing" className="nav-link billing-link">
+              <span className="nav-icon">💰</span> Billing
             </Link>
           )}
           <Link to="/about" className="nav-link">
