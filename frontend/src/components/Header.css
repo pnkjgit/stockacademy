@@ -72,6 +72,85 @@
   border-bottom-color: var(--primary);
 }
 
+/* Auth Section */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.user-email {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.auth-links {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.auth-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.login-btn {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: transparent;
+}
+
+.login-btn:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.signup-btn {
+  background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+  color: white;
+  border-color: var(--primary);
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
 @media (max-width: 768px) {
   .appbar-nav {
     gap: 1rem;
@@ -79,5 +158,22 @@
 
   .appbar-logo {
     font-size: 1.25rem;
+  }
+
+  .auth-section {
+    gap: 0.5rem;
+  }
+
+  .user-email {
+    display: none;
+  }
+
+  .user-menu {
+    padding: 0.3rem 0.6rem;
+  }
+
+  .auth-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
