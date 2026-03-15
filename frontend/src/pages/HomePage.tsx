@@ -12,6 +12,11 @@ interface Module {
   title: string;
   emoji: string;
   description: string;
+  difficulty: string;
+  estimatedHours: number;
+  targetAudience: string;
+  learningOutcomes: string[];
+  keySkills: string[];
   lessons: Lesson[];
 }
 
@@ -22,7 +27,22 @@ export function HomePage() {
       title: "Stock Market Basics",
       emoji: "📚",
       description:
-        "Start from scratch and learn the fundamentals of the Indian Stock Market",
+        "Start from scratch and learn the fundamentals of the Indian Stock Market. Perfect for absolute beginners.",
+      difficulty: "Beginner",
+      estimatedHours: 8,
+      targetAudience: "Beginners, New Investors",
+      learningOutcomes: [
+        "Understand how stock markets work",
+        "Learn to open a trading account",
+        "Master reading stock quotes",
+        "Build a diversified portfolio",
+      ],
+      keySkills: [
+        "Stock Market Knowledge",
+        "Trading Basics",
+        "Risk Awareness",
+        "Portfolio Building",
+      ],
       lessons: [
         { id: 1, title: "What is Indian Stock Market?" },
         { id: 2, title: "Understanding Stocks & Shares" },
@@ -31,6 +51,14 @@ export function HomePage() {
         { id: 5, title: "How to Open a Trading Account" },
         { id: 6, title: "Bid-Ask Spreads Explained" },
         { id: 7, title: "Bull & Bear Markets" },
+        { id: 8, title: "Types of Orders in Stock Trading" },
+        { id: 9, title: "Brokers and Brokerage Charges" },
+        { id: 10, title: "How to Read Stock Quotes" },
+        { id: 11, title: "Intraday vs Long-term Investing" },
+        { id: 12, title: "Stock Splits and Bonus Shares" },
+        { id: 13, title: "Dividends and Dividend Yield" },
+        { id: 14, title: "Diversification and Portfolio Building" },
+        { id: 15, title: "How to Research and Analyze a Stock" },
       ],
     },
     {
@@ -38,7 +66,22 @@ export function HomePage() {
       title: "Technical Analysis",
       emoji: "📊",
       description:
-        "Master candlesticks, patterns, and indicators to analyze market trends",
+        "Master chart patterns, candlestick analysis, and trading indicators to identify market trends and entry/exit points.",
+      difficulty: "Intermediate",
+      estimatedHours: 12,
+      targetAudience: "Active Traders, Swing Traders",
+      learningOutcomes: [
+        "Read and interpret stock charts",
+        "Identify candlestick patterns",
+        "Use technical indicators effectively",
+        "Spot market reversals and breakouts",
+      ],
+      keySkills: [
+        "Chart Analysis",
+        "Pattern Recognition",
+        "Indicator Interpretation",
+        "Trend Following",
+      ],
       lessons: [
         { id: 1, title: "Candlestick Patterns 101" },
         { id: 2, title: "Support & Resistance Levels" },
@@ -55,7 +98,22 @@ export function HomePage() {
       title: "Fundamental Analysis",
       emoji: "💼",
       description:
-        "Learn to evaluate companies and make informed investment decisions",
+        "Analyze company financial statements, valuation metrics, and business fundamentals to make informed long-term investment decisions.",
+      difficulty: "Intermediate",
+      estimatedHours: 10,
+      targetAudience: "Long-term Investors, Value Investors",
+      learningOutcomes: [
+        "Evaluate company financial health",
+        "Calculate key valuation ratios",
+        "Assess competitive advantages",
+        "Identify undervalued stocks",
+      ],
+      keySkills: [
+        "Financial Statement Analysis",
+        "Valuation Methods",
+        "Business Evaluation",
+        "Industry Understanding",
+      ],
       lessons: [
         { id: 1, title: "Reading Financial Statements" },
         { id: 2, title: "P/E Ratio & Valuation" },
@@ -71,7 +129,22 @@ export function HomePage() {
       title: "Risk Management",
       emoji: "🛡️",
       description:
-        "Protect your capital with proven risk management strategies",
+        "Protect your capital with proven risk management strategies, position sizing, and portfolio protection techniques.",
+      difficulty: "Intermediate",
+      estimatedHours: 6,
+      targetAudience: "All Investors, Risk-Conscious Traders",
+      learningOutcomes: [
+        "Manage portfolio risk effectively",
+        "Calculate risk-reward ratios",
+        "Master position sizing",
+        "Protect capital from losses",
+      ],
+      keySkills: [
+        "Stop Loss Management",
+        "Portfolio Diversification",
+        "Risk Calculation",
+        "Emotional Control",
+      ],
       lessons: [
         { id: 1, title: "Stop Loss Orders" },
         { id: 2, title: "Position Sizing" },
@@ -108,12 +181,53 @@ export function HomePage() {
             <div key={module.id} className="module-card">
               <div className="module-header">
                 <span className="module-emoji">{module.emoji}</span>
-                <h3>{module.title}</h3>
+                <div className="header-content">
+                  <h3>{module.title}</h3>
+                  <div className="module-meta">
+                    <span
+                      className={`difficulty difficulty-${module.difficulty.toLowerCase()}`}
+                    >
+                      {module.difficulty}
+                    </span>
+                    <span className="estimated-time">
+                      ⏱️ {module.estimatedHours}h
+                    </span>
+                  </div>
+                </div>
               </div>
+
               <p className="module-description">{module.description}</p>
 
+              <div className="audience-section">
+                <span className="label">👥 For:</span>
+                <p className="audience-text">{module.targetAudience}</p>
+              </div>
+
+              <div className="outcomes-section">
+                <h4>What You'll Learn:</h4>
+                <ul className="outcomes-list">
+                  {module.learningOutcomes.map((outcome, idx) => (
+                    <li key={idx}>
+                      <span className="check-mark">✓</span>
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="skills-section">
+                <h4>Key Skills:</h4>
+                <div className="skills-tags">
+                  {module.keySkills.map((skill, idx) => (
+                    <span key={idx} className="skill-tag">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               <div className="lessons-list">
-                <h4>Topics to Learn:</h4>
+                <h4>📚 Topics Covered:</h4>
                 <ul>
                   {module.lessons.slice(0, 5).map((lesson) => (
                     <li key={lesson.id}>
@@ -130,7 +244,7 @@ export function HomePage() {
               </div>
 
               <div className="lesson-count">
-                {module.lessons.length} lessons
+                {module.lessons.length} lessons • {module.estimatedHours} hours
               </div>
 
               <Link

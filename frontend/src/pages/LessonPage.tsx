@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Sidebar } from "../components/Sidebar";
 import { getLessonContent } from "../data/lessonContent";
+import { CandlestickPatternsCollection } from "../components/CandlestickPatterns";
 import "./LessonPage.css";
 
 interface Lesson {
@@ -30,6 +31,14 @@ const modules: Module[] = [
       { id: 5, title: "How to Open a Trading Account" },
       { id: 6, title: "Bid-Ask Spreads Explained" },
       { id: 7, title: "Bull & Bear Markets" },
+      { id: 8, title: "Types of Orders in Stock Trading" },
+      { id: 9, title: "Brokers and Brokerage Charges" },
+      { id: 10, title: "How to Read Stock Quotes" },
+      { id: 11, title: "Intraday vs Long-term Investing" },
+      { id: 12, title: "Stock Splits and Bonus Shares" },
+      { id: 13, title: "Dividends and Dividend Yield" },
+      { id: 14, title: "Diversification and Portfolio Building" },
+      { id: 15, title: "How to Research and Analyze a Stock" },
     ],
   },
   {
@@ -147,6 +156,14 @@ export function LessonPage() {
 
           <div className="markdown-content">
             {lesson.content.split("\n").map((line, idx) => {
+              // Check for visualization markers
+              if (line.includes("[VISUALIZATION:CandlestickPatterns]")) {
+                return (
+                  <div key={idx} className="visualization-container">
+                    <CandlestickPatternsCollection />
+                  </div>
+                );
+              }
               if (line.startsWith("## ")) {
                 return (
                   <h2 key={idx} className="md-h2">

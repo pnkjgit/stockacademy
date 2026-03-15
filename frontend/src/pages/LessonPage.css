@@ -300,3 +300,23 @@
     padding: 1rem;
   }
 }
+
+/* Visualization Container */
+.visualization-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--primary);
+}
+
+.visualization-container h3 {
+  color: var(--primary);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.visualization-container h3:first-child {
+  margin-top: 0;
+}

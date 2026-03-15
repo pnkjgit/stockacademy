@@ -9,9 +9,15 @@ export function Header() {
           📈 StockAcademy
         </Link>
         <nav className="appbar-nav">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/" className="nav-link">
+            <span className="nav-icon">🏠</span> Home
+          </Link>
+          <Link to="/about" className="nav-link">
+            <span className="nav-icon">ℹ️</span> About
+          </Link>
+          <Link to="/contact" className="nav-link">
+            <span className="nav-icon">📧</span> Contact
+          </Link>
         </nav>
       </div>
     </header>

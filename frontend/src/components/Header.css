@@ -46,6 +46,25 @@
   transition: all 0.2s ease;
   border-bottom: 2px solid transparent;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.appbar-nav a:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  display: inline-block;
 }
 
 .appbar-nav a:hover {

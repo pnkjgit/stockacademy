@@ -1,0 +1,102 @@
+.patterns-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.pattern-container {
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.pattern-container:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.pattern-title {
+  color: #60a5fa;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.pattern-svg {
+  width: 100%;
+  height: auto;
+  background-color: #0f172a;
+  border-radius: 6px;
+  display: block;
+  margin: 1rem 0;
+  min-height: 200px;
+}
+
+.pattern-description {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.candlestick-education {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.section-title {
+  color: #3b82f6;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pattern-container {
+    padding: 1rem;
+  }
+
+  .pattern-title {
+    font-size: 0.9rem;
+  }
+
+  .pattern-description {
+    font-size: 0.85rem;
+  }
+
+  .pattern-svg {
+    min-height: 150px;
+  }
+}
+
+/* Animation for hover effect on patterns */
+.pattern-container {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid layout for larger screens */
+@media (min-width: 1024px) {
+  .patterns-collection {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
