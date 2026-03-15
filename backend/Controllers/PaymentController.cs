@@ -35,27 +35,69 @@ public class PaymentController : ControllerBase
                 return BadRequest(new { error = "Email is required" });
             }
 
-            // In production, you would:
-            // 1. Call Razorpay API to create an order
-            // 2. Save order details to database
-            // 3. Return order ID to frontend
-
-            // For now, we'll create a mock order ID
-            // In real implementation, call Razorpay API:
-            // POST https://api.razorpay.com/v1/orders
-            // with Authorization header and request body
-
-            string orderId = GenerateMockOrderId();
-
-            _logger.LogInformation($"Order created: {orderId} for email: {request.UserEmail}");
-
-            return Ok(new
+            if (string.IsNullOrEmpty(_razorpayKeyId) || string.IsNullOrEmpty(_razorpayKeySecret))
             {
-                orderId = orderId,
-                amount = request.Amount,
-                currency = request.Currency ?? "INR",
-                description = "StockAcademy Annual Subscription"
-            });
+                _logger.LogError("Razorpay credentials are not configured");
+                return StatusCode(500, new { error = "Payment service not configured" });
+            }
+
+            // Call Razorpay API to create order
+            using (var client = new HttpClient())
+            {
+                // Create Basic Auth header
+                var auth = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_razorpayKeyId}:{_razorpayKeySecret}"));
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", auth);
+
+                // Prepare order data
+                var orderData = new
+                {
+                    amount = request.Amount,
+                    currency = request.Currency ?? "INR",
+                    receipt = $"order_{DateTime.UtcNow.Ticks}",
+                    notes = new
+                    {
+                        user_email = request.UserEmail,
+                        user_id = request.UserId
+                    }
+                };
+
+                // Convert to form data (Razorpay expects form-encoded data)
+                var content = new Dictionary<string, string>
+                {
+                    { "amount", request.Amount.ToString() },
+                    { "currency", request.Currency ?? "INR" },
+                    { "receipt", $"order_{DateTime.UtcNow.Ticks}" }
+                };
+
+                var formContent = new FormUrlEncodedContent(content);
+
+                // Call Razorpay API
+                var response = await client.PostAsync(
+                    "https://api.razorpay.com/v1/orders",
+                    formContent
+                );
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    _logger.LogError($"Razorpay API error: {errorContent}");
+                    return StatusCode((int)response.StatusCode, new { error = "Failed to create order with payment gateway" });
+                }
+
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var orderResult = System.Text.Json.JsonDocument.Parse(responseContent);
+                var orderId = orderResult.RootElement.GetProperty("id").GetString();
+
+                _logger.LogInformation($"Order created via Razorpay: {orderId} for email: {request.UserEmail}");
+
+                return Ok(new
+                {
+                    orderId = orderId,
+                    amount = request.Amount,
+                    currency = request.Currency ?? "INR",
+                    description = "StockAcademy Annual Subscription"
+                });
+            }
         }
         catch (Exception ex)
         {
