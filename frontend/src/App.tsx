@@ -9,6 +9,9 @@ import { AboutPage } from "./pages/AboutPage";
 import { ContactPage } from "./pages/ContactPage";
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
+import { PricingPage } from "./pages/PricingPage";
+import { PaymentPage } from "./pages/PaymentPage";
+import { PaymentSuccessPage } from "./pages/PaymentSuccessPage";
 import "./App.css";
 
 function App() {
@@ -47,6 +50,32 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ContactPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Payment routes - require authentication */}
+            <Route
+              path="/pricing"
+              element={
+                <ProtectedRoute>
+                  <PricingPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/payment"
+              element={
+                <ProtectedRoute>
+                  <PaymentPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/payment-success"
+              element={
+                <ProtectedRoute>
+                  <PaymentSuccessPage />
                 </ProtectedRoute>
               }
             />

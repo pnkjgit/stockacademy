@@ -19,6 +19,15 @@ export function RootPage() {
     return <Navigate to="/login" replace />;
   }
 
-  // If authenticated, show home page
+  // Check if user has completed subscription payment
+  const subscriptionCompleted =
+    localStorage.getItem("subscription_completed") === "true";
+
+  // If authenticated but no subscription, redirect to pricing page
+  if (!subscriptionCompleted) {
+    return <Navigate to="/pricing" replace />;
+  }
+
+  // If authenticated and has subscription, show home page
   return <HomePage />;
 }
