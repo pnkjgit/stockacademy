@@ -20,7 +20,9 @@ builder.Services.AddCors(options =>
             "http://localhost:5179",
             "http://localhost:5180",
             "http://localhost:5181",
-            "https://stockacademy.netlify.app"
+            "https://stockacademy.netlify.app",
+            "https://stockacademy.co",
+            "https://www.stockacademy.co"
         )
               .AllowAnyHeader()
               .AllowAnyMethod();
