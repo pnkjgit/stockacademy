@@ -114,15 +114,6 @@ export function ContactPage() {
             </div>
           </div>
         </div>
-
-        <div className="contact-footer">
-          <p>
-            © 2024 StockAcademy. Developed by <strong>Pankaj Sharma</strong>
-          </p>
-          <p>
-            Making stock market education accessible to everyone in India 📈
-          </p>
-        </div>
       </div>
     </main>
   );
