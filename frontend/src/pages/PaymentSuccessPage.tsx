@@ -22,7 +22,7 @@ export function PaymentSuccessPage() {
 
     const subscriptionDetails = {
       planType: "Annual",
-      amount: 99,
+      amount: 49,
       purchaseDate: today.toISOString(),
       expiryDate: expiryDate.toISOString(),
       paymentStatus: "completed",

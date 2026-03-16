@@ -46,7 +46,7 @@ export function PaymentPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: 99 * 100, // Amount in paise (99 INR = 9900 paise)
+          amount: 49 * 100, // Amount in paise (49 INR = 4900 paise)
           currency: "INR",
           userEmail: user?.email,
           userId: user?.id,
@@ -62,7 +62,7 @@ export function PaymentPage() {
       // Configure Razorpay options
       const options = {
         key: RAZORPAY_KEY_ID,
-        amount: 99 * 100, // Amount in paise
+        amount: 49 * 100, // Amount in paise
         currency: "INR",
         name: "StockAcademy",
         description: "Annual Subscription - Learn Stock Market",

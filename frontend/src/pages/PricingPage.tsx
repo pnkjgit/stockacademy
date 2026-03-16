@@ -24,7 +24,7 @@ export function PricingPage() {
           <h2>Annual Plan</h2>
           <div className="price-section">
             <span className="currency">₹</span>
-            <span className="amount">99</span>
+            <span className="amount">49</span>
             <span className="period">/year</span>
           </div>
         </div>
