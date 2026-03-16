@@ -131,11 +131,11 @@ export function PaymentPage() {
           <h2>Order Summary</h2>
           <div className="summary-item">
             <span>Annual Subscription Plan</span>
-            <span>₹99.00</span>
+            <span>₹49.00</span>
           </div>
           <div className="summary-item total">
             <span>Total Amount</span>
-            <span>₹99.00</span>
+            <span>₹49.00</span>
           </div>
         </div>
 
@@ -180,7 +180,7 @@ export function PaymentPage() {
         </div>
 
         <button className="pay-btn" onClick={handlePayment} disabled={loading}>
-          {loading ? "Processing..." : "Pay ₹99 Now"}
+          {loading ? "Processing..." : "Pay ₹49 Now"}
         </button>
 
         <div className="payment-footer">

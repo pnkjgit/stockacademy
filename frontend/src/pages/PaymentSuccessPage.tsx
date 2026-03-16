@@ -76,7 +76,7 @@ export function PaymentSuccessPage() {
           </div>
           <div className="detail-item">
             <span className="label">Amount Paid</span>
-            <span className="value">₹99.00</span>
+            <span className="value">₹49.00</span>
           </div>
           <div className="detail-item">
             <span className="label">Validity</span>
